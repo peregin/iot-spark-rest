@@ -7,7 +7,7 @@ It collects json data from vehicles, it publishes to Kafka, Spark aggregates the
   --------------------        --------        ----------        ---------
  |                    |      |        |      |          |      |         |
  | PublishMessagesApp | ---> |   ZK   | ---> | SparkApp | ---> | RestApp |
- | InputMessage json  |      | Kafka  |      |          |      | Counter |
+ |  VehicleData json  |      | Kafka  |      |          |      | Counter |
  |                    |      |        |      |          |      |         |
   --------------------        --------        ----------        ---------
 ```
