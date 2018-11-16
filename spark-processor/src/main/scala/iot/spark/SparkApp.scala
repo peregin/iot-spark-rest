@@ -29,7 +29,10 @@ object SparkApp extends App {
   val hardBreakForceLimit = sys.props.getOrElse("iot.hardbreak.threshold", "-2.45").toFloat  // 1/4 of G force
   val speedingThreshold = sys.props.getOrElse("iot.speeding.threshold", "52").toFloat // because it's bicycle data
 
-  val kafkaParams = Map[String, String]("metadata.broker.list" -> brokerHost)
+  val kafkaParams = Map[String, String](
+    "metadata.broker.list" -> brokerHost,
+    "auto.offset.reset" -> "smallest"
+  )
   val kafkaStream = KafkaUtils.createDirectStream[String, VehicleData, StringDecoder, VehicleDecoder](ssc, kafkaParams, Set(topicName))
 
 
